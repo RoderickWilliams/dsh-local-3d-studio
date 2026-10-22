@@ -1,0 +1,17 @@
+{
+  "name": "dsh-local-3d-studio",
+  "version": "0.3.1",
+  "description": "DeepSeek Harness 鏈湴涓夌淮宸ヤ綔瀹わ細纭欢涓庡伐鍏峰疄娴嬫帰娴嬨€佹枃瀛?鍥剧墖/瑙嗛杈撳叆銆佹牱渚嬪鎵广€佹ā鍨嬩笌鍔ㄧ敾娓叉煋锛涘唴缃?Three.js 绋嬪簭鍖栫敓鎴愩€佹ā鍨嬩慨鏀广€佺绾块瑙堥〉涓庡瑙嗚鎴浘锛屾棤闇€ Blender",
+  "keywords": ["dsh", "ai", "3d", "three.js", "gltf", "blender", "model-editing", "procedural", "render"],
+  "type": "module",
+  "main": "index.mjs",
+  "exports": { ".": "./index.mjs" },
+  "files": ["index.mjs", "cordis.patch.yml", "src", "workers", "assets", "viewer", "examples", "docs", "scripts", "recipes", "tests", "README.md", "LICENSE"],
+  "engines": { "node": ">=22", "dsh": ">=0.2.1-rc.1 <0.3.0" },
+  "peerDependencies": { "@deepseek-ai/dsh-tools": ">=0.2.1-rc.1 <0.3.0", "@deepseek-ai/dsh-mcp-client": ">=0.2.1-rc.1 <0.3.0" },
+  "peerDependenciesMeta": { "@deepseek-ai/dsh-mcp-client": { "optional": true } },
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } },
+  "scripts": { "test": "node --test tests/core.test.mjs", "package": "python scripts/package.py" },
+  "license": "MIT"
+}
+

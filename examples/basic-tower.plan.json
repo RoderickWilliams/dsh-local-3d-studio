@@ -1,0 +1,35 @@
+{
+  "title": "机械小塔基础模型样例",
+  "summary": "先建立底座、立柱、环形结构和顶盖，采用中性材质与简单展示灯光。样例后询问特别需求及精细化方向。",
+  "limitations": ["这是用于确认总体方向的基础模型，没有声称具备精确装配尺寸。"],
+  "render": { "width": 1280, "height": 720, "fps": 24, "frames": 1 },
+  "previewSteps": [
+    { "kind": "blender", "tool": "create_object", "args": { "type": "CYLINDER", "name": "TowerBase", "location": [0, 0, 0.2], "scale": [1.2, 1.2, 0.2] }, "reason": "搭建底座" },
+    { "kind": "blender", "tool": "create_object", "args": { "type": "CYLINDER", "name": "TowerColumn", "location": [0, 0, 1.2], "scale": [0.35, 0.35, 0.8] }, "reason": "搭建承力主体" },
+    { "kind": "blender", "tool": "create_object", "args": { "type": "TORUS", "name": "TowerRing", "location": [0, 0, 2], "scale": [0.8, 0.8, 0.3] }, "reason": "确定环形轮廓" },
+    { "kind": "blender", "tool": "create_object", "args": { "type": "CONE", "name": "TowerCap", "location": [0, 0, 2.6], "scale": [0.6, 0.6, 0.6] }, "reason": "补齐顶部形体" },
+    { "kind": "blender", "tool": "create_camera", "args": { "name": "StudioCamera", "location": [6, -8, 5], "lens": 50 }, "reason": "建立展示机位" },
+    { "kind": "blender", "tool": "point_camera_at", "args": { "camera_name": "StudioCamera", "location": [0, 0, 1.4] }, "reason": "让摄影机对准主体" },
+    { "kind": "blender", "tool": "set_active_camera", "args": { "object_name": "StudioCamera" }, "reason": "指定渲染机位" },
+    { "kind": "blender", "tool": "create_light", "args": { "type": "POINT", "name": "KeyLight", "location": [3, -4, 6], "energy": 1400 }, "reason": "使用现成布光工具" },
+    { "kind": "blender", "tool": "create_light", "args": { "type": "POINT", "name": "FillLight", "location": [-3, 1, 3], "energy": 500, "color": [0.65, 0.75, 1] }, "reason": "增加轮廓可见度" },
+    { "kind": "blender", "tool": "set_render_engine", "args": { "engine": "CYCLES" }, "reason": "选择本地渲染器" },
+    { "kind": "blender", "tool": "set_render_resolution", "args": { "width": 640, "height": 360 }, "reason": "先使用低成本样例规格" },
+    { "kind": "blender", "tool": "set_render_samples", "args": { "samples": 16 }, "reason": "控制基础样例耗时" },
+    { "kind": "blender", "tool": "save_file", "args": { "filepath": "{previewDir}/sample.blend" }, "reason": "保留真实可编辑模型" },
+    { "kind": "blender", "tool": "render_image", "args": { "filepath": "{previewDir}/front.png" }, "reason": "生成用户可判断的真实样图" }
+  ],
+  "buildSteps": [
+    { "kind": "blender", "tool": "set_render_resolution", "args": { "width": 1280, "height": 720 }, "reason": "按批准的基础方案输出" },
+    { "kind": "blender", "tool": "set_render_samples", "args": { "samples": 64 }, "reason": "改善最终图像采样" },
+    { "kind": "blender", "tool": "save_file", "args": { "filepath": "{buildDir}/final.blend" }, "reason": "保存当前修订版工程" },
+    { "kind": "blender", "tool": "export_file", "args": { "filepath": "{buildDir}/model.glb", "type": "GLTF", "selected_only": false }, "reason": "导出可编辑三维资产" },
+    { "kind": "blender", "tool": "render_image", "args": { "filepath": "{buildDir}/final.png" }, "reason": "生成最终展示图" }
+  ],
+  "artifacts": {
+    "previews": ["{previewDir}/front.png"],
+    "previewScene": "{previewDir}/sample.blend",
+    "scene": "{buildDir}/final.blend",
+    "models": ["{buildDir}/model.glb"]
+  }
+}

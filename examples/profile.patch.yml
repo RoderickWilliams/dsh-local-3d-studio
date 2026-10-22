@@ -1,0 +1,23 @@
+# 只把需要的字段合并进你当前 profile 对应行，不覆盖整个 profile。
+# 所有示例路径均需替换为本机真实路径。
+- id: local-3d-studio
+  config:
+    dataRoot: E:/DeepSeek/3d-studio-projects
+    projectRoots:
+      - E:/DeepSeek
+    preferredProjects: []
+    inputRoots:
+      - E:/DeepSeek
+      - C:/Users/wzb02/Desktop
+    skillPaths:
+      - E:/Codex/home/plugins/cache/mattpocock/mattpocock-skills/1.3.1/skills/productivity/grilling/SKILL.md
+      - E:/Codex/home/skills/ffmpeg-ops/SKILL.md
+    taskTimeoutMinutes: 180
+    maxFrames: 3600
+    hunyuanPaint: false
+    # 宿主没有公开当前模型路由时，可按实际配置补充；这里不填写 Key。
+    # modelRoute:
+    #   provider: 当前宿主中的路由名
+    #   model: 当前模型ID
+    visionMode: auto
+    # mediaPython: E:/已有音频环境/Scripts/python.exe

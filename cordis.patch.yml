@@ -1,0 +1,4 @@
+- insert:
+    - id: local-3d-studio
+      name: dsh-local-3d-studio
+      config: {}

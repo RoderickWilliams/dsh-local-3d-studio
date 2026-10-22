@@ -1,0 +1,7 @@
+node_modules/
+.reference/
+dist/
+3d-studio-projects/
+__pycache__/
+*.pyc
+.test-tmp/
