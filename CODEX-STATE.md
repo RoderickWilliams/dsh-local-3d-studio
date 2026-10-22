@@ -80,3 +80,9 @@
 - 工具层验证：generate 办公桌 35,400B；render front 28,060 / right 27,735 / iso 47,090；viewer 离线单文件。
 - 修复 0.3.1：cylinder 不认 radius、追景距离过远；dist 产出 0.3.1 tgz/zip 与 market-entry 0.3.1。
 - 待办：npm 未登录（ENEEDAUTH），市场发布仍只到「可安装包 + 登记材料」。
+
+## 2026-10-22 上架准备（GitHub 仓库 + 市集 PR）
+- 公开仓库：https://github.com/RoderickWilliams/dsh-local-3d-studio（55 文件，MIT，topic `dsh-plugin`，`screenshots.json` 两张渲染图）。
+- `package.json` 补齐 `repository` / `homepage` / `bugs` / `publishConfig`，并修正描述里的乱码（原为 GBK 往返损坏）。
+- 市集 PR #8638：新增 `data/plugins/RoderickWilliams__dsh-local-3d-studio.yml`（category `tools`）。规则要求仓库创建满 1 天，仓库建于 2026-10-22T07:25Z，次日同一分支推空提交重跑 CI。
+- npm 发布仍待用户 `npm login --auth-type=legacy`；本机 npm 官方源连通，未登录。
